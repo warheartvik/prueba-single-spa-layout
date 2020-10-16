@@ -73,6 +73,25 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.0/dist/extras/amd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.4.0/dist/extras/named-exports.min.js"></script>
   <% } %>
+  <script>
+    // This is a custom SystemJS extra that should be deleted when you upgrade to
+    // webpack 5. More details at https://github.com/react-microfrontends/api/issues/1
+    (function() {
+      const originalInstantiate = System.constructor.prototype.instantiate;
+      System.constructor.prototype.instantiate = function() {
+        return originalInstantiate
+          .apply(this, arguments)
+          .then(function(register) {
+            const originalFn = register[1];
+            register[1] = function(_export) {
+              _export("__esModule", true);
+              return originalFn.apply(this, arguments);
+            };
+            return register;
+          });
+      };
+    })();
+  </script>
 
   <template id="single-spa-layout">
     <single-spa-router>
