@@ -44,12 +44,11 @@
 
   <!-- Add your organization's prod import map URL to this script's src  -->
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
-
+  <!-- "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js", -->
   <% if (isLocal) { %>
   <script type="systemjs-importmap">
     {
       "imports": {
-        "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
         "app1": "http://localhost:8081/js/app.js",
         "@quipubyteltda/root-config": "//localhost:9000/quipubyteltda-root-config.js"         
       }
@@ -81,10 +80,10 @@
         <application name="@<%- orgName %>/navbar"></application>
       </nav> -->
       <main>
-        <route default>
+        <!-- <route default>
           <application name="@single-spa/welcome"></application>
-        </route>
-        <route path="app1">
+        </route> -->
+        <route default>
           <application name="app1"></application>
         </route>        
       </main>
