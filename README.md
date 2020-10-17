@@ -3,7 +3,7 @@ Prueba de single-spa-layout con una vue-subapp
 
 
 ```sh
-# First erminal tab
+# First terminal tab
 cd app1
 npm install
 npm run serve
